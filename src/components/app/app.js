@@ -15,13 +15,6 @@ const AppBlock = styled.div`
   margin: 0 auto;
   max-width: 800px;
 `;
-
-//     // создание нов.компонента на основе существ с его стилями
-// const StyledAppBlock = styled(AppBlock)`
-//     background-color: grey;
-// `;
-
-
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -40,7 +33,6 @@ export default class App extends Component {
         this.onToggleLiked = this.onToggleLiked.bind(this);
         this.onUpdateSearch = this.onUpdateSearch.bind(this);
         this.onFilterSelect = this.onFilterSelect.bind(this);
-
         this.maxId = 4;
     }
 
@@ -48,7 +40,6 @@ export default class App extends Component {
         this.setState(({data}) =>{
             const index = data.findIndex(elem => elem.id === id);
             const newArr = [...data.slice(0, index), ...data.slice(index + 1)];
-            // const newArr = data.filter(item => item.id !== id)
             return {
                 data: newArr
             }
@@ -68,40 +59,23 @@ export default class App extends Component {
             }
         })
     }
-    // updateDate(id, prop) {
-    //     this.setState(({data}) => {
-    //         const index = data.findIndex(elem => elem.id === id);
-    //         const old = data[index];
-    //         const newItem = {...old, prop: !old.prop};
-    //         const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)]
-    //         return {
-    //             data: newArr
-    //         }
-    //     })
-    // }
-    onToggleImportant(id) {
-        // this.updateDate(id, important);
+    updateDate(id, prop) {
         this.setState(({data}) => {
             const index = data.findIndex(elem => elem.id === id);
             const old = data[index];
-            const newItem = {...old, important: !old.important};
-            const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
-            return {
-                data: newArr
-            }
-        })
-    }
-    onToggleLiked(id) {
-        // this.updateDate(id, like);
-        this.setState(({data}) => {
-            const index = data.findIndex(elem => elem.id === id);
-            const old = data[index];
-            const newItem = {...old, like: !old.like};
+            const newItem = {...old, [prop]: !old[prop]};
             const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)]
             return {
                 data: newArr
             }
         })
+    }
+
+    onToggleImportant(id) {
+        this.updateDate(id, 'important');
+    }
+    onToggleLiked(id) {
+        this.updateDate(id, 'like');
     }
     searchPost(items, term) {
         if (term.length === 0) {

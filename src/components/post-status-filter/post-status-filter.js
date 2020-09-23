@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-    // импорт из бутстрап библиотеки компонентa
-// import { Button } from 'reactstrap';
 import './post-status-filter.css';
 
 export default class PostStatusFilter extends Component {
     constructor(props) {
         super(props);
-
         this.buttons = [
             {name: 'all', label: 'Все'},
             {name: 'like', label: 'Понравилось'},

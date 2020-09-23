@@ -4,34 +4,6 @@ import PostListItem from '../post-list-item';
 import { ListGroup } from 'reactstrap';
 import './post-list.css';
 
-/*const PostList = ({posts, onDelete}) => {
-
-    const elements = posts.map((item) => {
-        const {id, ...itemProps} = item;
-        return (
-            <li key={id} className='list-group-item'>
-                <PostListItem
-                {...itemProps}
-                onDelete={() => onDelete(id)}/>
-            </li>
-        )
-    });
-    // проверка на пустоту
-    function isEmpty(obj) {
-        for(let key in obj)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    return (
-        <ListGroup className="app-list">
-            {elements}
-        </ListGroup>
-    )
-}*/
-
     // функция динамического отображения данных, полученных с сервера
 const PostList = ({posts, onDelete, onToggleImportant, onToggleLiked}) => {
         // переменная с результир li
@@ -58,7 +30,7 @@ const PostList = ({posts, onDelete, onToggleImportant, onToggleLiked}) => {
         return false;
 
     });
-    // проверка на пустоту
+        // проверка на пустоту
     function isEmpty(obj) {
         for(let key in obj)
         {
@@ -66,7 +38,6 @@ const PostList = ({posts, onDelete, onToggleImportant, onToggleLiked}) => {
         }
         return false;
     }
-
     return (
         <ListGroup className="app-list">
             {elements}

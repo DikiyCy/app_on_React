@@ -4,13 +4,11 @@ import './post-add-form.css';
 export default class PostAddForm extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             text: ''
         }
         this.onValueChange = this.onValueChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        
     }
 
     onValueChange(event) {
@@ -19,14 +17,14 @@ export default class PostAddForm extends Component {
         })
     }
     onSubmit(event) {
-        this.props.onAdd(this.state.text);
+        if (this.state.text) {
+            this.props.onAdd(this.state.text);
+        }
         event.preventDefault();
         this.setState({
             text: ''
         })
     }
-    // onClick(event) {
-    // }
 
     render() {
         return (
@@ -43,8 +41,7 @@ export default class PostAddForm extends Component {
                 <button
                     type="submit"
                     className="btn btn-outline-secondary"
-                    // onClick={this.onClick}
-                >
+                    >
                     Добавить
                 </button>
             </form>
